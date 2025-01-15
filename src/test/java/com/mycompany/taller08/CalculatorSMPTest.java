@@ -48,6 +48,7 @@ public class CalculatorSMPTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
 
     @Test
     @DisplayName("ID: 011 - Probar Solve que funcione correcto")
