@@ -48,4 +48,31 @@ public class CalculatorSMPTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
+
+    @Test
+    @DisplayName("ID: 011 - Probar Solve que funcione correcto")
+    void testSolve(){
+        assertEquals("68-83+42+88=115",Operations.Solve(Operations.MakeFormula())   ,"No son iguales los strings");
+    }
+    @Test
+    @DisplayName("ID: 012 - Probar que solve no funcione con oraciones")
+    void testSolveSentences(){
+        assertNull(Operations.Solve("Hola"),"El valor deberia ser nulo");
+    }
+    @Test
+    @DisplayName("ID: 013 - Probar que solve recibe numero sin operacion")
+    void testSolveOnlyNumber(){
+        assertEquals("27",Operations.Solve("27"),"Los valores no son iguales");
+    }
+    @Test
+    @DisplayName("ID: 014 - Probar solve con una cadena vacía")
+    void testSolveVoid(){
+        assertEquals("=",Operations.Solve(""),"Debe lanzar una excepcion");
+    }
+    @Test
+    @DisplayName("ID: 015 - Probar que Solve no acepta nulos ")
+    void testSolveNull(){
+        assertEquals("null",Operations.Solve(null), "Debe lanzar una excepcion");
+    }
 }
