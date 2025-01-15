@@ -4,12 +4,15 @@
  */
 package calculatorsmp;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -24,17 +27,77 @@ public class OperationsTest {
     public static void setUpClass() {
     }
     
-    @AfterAll
-    public static void tearDownClass() {
+    
+     @Test
+    @DisplayName("ID 001 - Prueba que verifica que la formula retornada no sea null")
+    public void testMakeFormulaNotNull(){
+        String operacion = Operations.MakeFormula();
+        assertNotNull(operacion);
+        assertFalse(operacion.isEmpty());
     }
     
-    @BeforeEach
-    public void setUp() {
+    @Test
+    @DisplayName("ID 002 - Prueba que verifica que la formula retornada es mayor a 3 caracteres")
+    public void testMakeFormulaTamanio(){
+        String operacion = Operations.MakeFormula();
+        assertTrue(operacion.length() > 3); 
     }
     
-    @AfterEach
-    public void tearDown() {
+     @Test
+    @DisplayName("ID 003 - Prueba que verifica que si la formula tiene una division por 0")
+    public void testMakeFormulaDivididaPorCero(){
+        String operacion = Operations.MakeFormula();
+        assertFalse(operacion.contains("/0"), "La formula tiene una division por 0: "+ operacion);
     }
+    
+    @Test
+    @DisplayName("ID 004 - Prueba que verifica que si la formula tiene una division por 0")
+    public void testTrueMakeFormulaDivididaPorCero(){
+        String operacion = Operations.MakeFormula();
+        assertTrue(operacion.contains("/0"), "La formula tiene una division por 0: "+ operacion);
+    }
+    
+    @Test
+    @DisplayName("ID 005 - Prueba que verifica que si la formula es vacia")
+    public void testTrueMakeFormulaIsEmpty(){
+        String operacion = Operations.MakeFormula();
+        if(operacion.isEmpty()){
+            fail("Se genero una formula vacia");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Test of MakeFormula method, of class Operations.
